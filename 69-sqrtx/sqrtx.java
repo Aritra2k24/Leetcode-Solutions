@@ -1,19 +1,29 @@
 class Solution {
     public int mySqrt(int x) {
-        int start = 1, end = x, floorres = 0;
-        while(start<= end)
+        int s = 1;
+        int e = x;
+        int ans = -1;
+        if(x == 0)
         {
-            int mid = start+ (end - start)/2;
-            if(mid<= x/mid)
+            return 0;
+        }
+        while(s<=e)
+        {
+            int mid = s + (e-s)/2;
+            if(mid == x/mid)
             {
-                floorres = mid;
-                start = mid + 1;
+                return mid;
+            }
+            else if(mid > x/mid)
+            {
+                e = mid - 1;
             }
             else{
-                end = mid - 1;
+                ans = mid;
+                s = mid + 1;
             }
-          
         }
-          return floorres;
+        return ans;
     }
+ 
 }
